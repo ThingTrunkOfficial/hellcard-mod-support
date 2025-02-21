@@ -27,6 +27,7 @@ We've written how-to tutorials for most of the items that you can create or modi
 - [Creating a Card](./docs/CreatingNewCard.md)
 - [Creating an Artifact](./docs/CreatingNewArtifact.md)
 - [Creating an Influence](./docs/CreatingNewInfluence.md)
+- [Existing Influences reference](https://thingtrunkofficial.github.io/hellcard-mod-support)
 - [Creating an Influence with AngelScript](./docs/AngelScriptInfluences.md)
 - [Creating a Torment](./docs/CreatingNewTorments.md)
 - [Creating a Monster](./docs/CreatingNewMonster.md)

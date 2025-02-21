@@ -25,7 +25,7 @@ You can read more about why you need this directories in [Getting started](./Get
 ![create influence](./content/influence_create.png)  
 
 4. Choose a meaningful name for your new influence.
-5. Now, to make your new influence valid you must choose a ***Class*** for it. Click on your newly created influence and under *Object Params* tab find *Class name:* and change it by your liking.  
+5. Now, to make your new influence valid you must choose a ***Class*** for it. Click on your newly created influence and under *Object Params* tab find *Class name:* and change it by your liking. Reference for all the implemented Influence classes can be found [here](https://thingtrunkofficial.github.io/hellcard-mod-support).
 ![change class](./content/change_class2.png)  
 
 6. Save changes by right clicking on ***Mod*** and selecting *Save All*

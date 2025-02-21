@@ -1,0 +1,609 @@
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+//-------------------------------- CLASSES -------------------------------------------------------------
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+class BCCGCharacterObjController{}
+class BCCGMonsterObjController{}
+class EventType{}
+class BCCGCardTargetContext{}
+class RefObj{}
+class BCCGInfluenceClass{}
+class Class{}
+class OptionalBCCGCardContext{}
+class File{}
+class BodDungObj{}
+class BCCGMonsterActionBase{}
+class BCCGMonsterAttackAction{}
+class BCCGVisualMonsterObj{}
+class DmgDesc{}
+class BCCGCharacterDungeonComponent{}
+class Random{}
+
+////////////////////->CONTROLLERS<-/////////////////////
+
+//remember to always use Init and SetActionBegin before pushing a controller
+//if influence has those
+
+class BCCGCharacterHitController : BCCGCharacterObjController
+{
+    void SetActionBegin(int val);
+}
+
+class BCCGCharacterMaxBlockController : BCCGCharacterObjController
+{
+    void Init(int change, bool with_effect);
+    void SetActionBegin(int val);
+}
+
+class BCCGCharacterMaxHPController : BCCGCharacterObjController
+{
+    void Init(int change, bool with_effect);
+    void SetActionBegin(int val);
+    void SetPlayedById(int id);
+}
+
+class BCCGMonsterHPController : BCCGMonsterObjController 
+{
+    void Init(int change, bool effect, BCCGMonsterActionBase@ action = null);
+    void SetActionBegin(int val);
+}
+
+class BCCGMonsterBlockController : BCCGMonsterObjController 
+{
+    void Init(int change, bool effect);
+    void SetActionBegin(int val);
+}
+
+class BCCGMonsterMaxHPController : BCCGMonsterObjController 
+{
+    void Init(int change, bool effect, BCCGMonsterActionBase@ action = null);
+    void SetActionBegin(int val);
+}
+class BCCGMonsterStrengthController : BCCGMonsterObjController 
+{
+    void Init(int change, bool effect, BCCGMonsterActionBase@ action = null);
+    void SetActionBegin(int val);
+}
+class BCCGMonsterFreezeController : BCCGMonsterObjController 
+{
+    void SetDefaultEffect(bool val);
+}
+
+class BCCGMonsterAttackController : BCCGMonsterObjController 
+{
+    void Init(BCCGMonsterAttackAction@ action, int amount);
+    void SetActionBegin(int val);
+}
+
+class BCCGMonsterEscapeController : BCCGMonsterObjController 
+{
+    void Init(BodMonsterTransType type);
+    void SetActionBegin(int val);
+}
+
+class BCCGMonsterWaitController : BCCGMonsterObjController 
+{
+    void Init(float time);
+    void SetActionBegin(int val);
+}
+
+class BCCGMonsterPushStunController : BCCGMonsterObjController 
+{
+    void SetActionBegin(int val);
+    void SetDefaultEffect(bool val);
+}
+
+class BCCGMonsterHitController : BCCGMonsterObjController
+{
+    void SetActionBegin(int val);
+    void SetPlayedById(int id);
+}
+
+class BCCGCharacterHPController : BCCGCharacterObjController 
+{
+    void Init(int change, bool with_effects);
+    void SetActionBegin(int val);
+    void SetPlayedById(int id);
+}
+
+class BCCGCharacterBlockController : BCCGCharacterObjController 
+{
+    void SetActionBegin(int val);
+    void SetPlayedById(int id);
+}
+
+class BCCGCharacterManaController : BCCGCharacterObjController
+{
+    void Init(int counter, bool effect);
+    void SetActionBegin(int val);
+    void SetPlayedById(int id);
+}
+
+////////////////////->EVENT_RELATED<-/////////////////////
+
+class Event
+{
+    Event@ Event(EventType@ type, int id = 0, Object@ obj = null);
+    EventType GetEventType();
+    int GetEventId();
+    Object@ GetEventObject();
+}
+
+//can be casted from Event when BCCG_CHAR_DUNG_COMPONENT_CARD_ADDED occured
+class CardAddedEvent
+{
+    BCCGCardInstance@ GetInstance();
+    BCCGCardPile GetPileId();
+}
+
+//can be casted from Event when BCCG_INFLUENCE_ADD_REQUEST occured
+class BCCGInfluenceAddRequestEvent
+{
+    int GetLinkedCharacterId();
+    BCCGInfluenceClass@ GetInfluenceClass();
+}
+
+//can be casted from Event when BCCG_PROCESS_CARD_MOVE_REQUESTS_EVT occured
+class BCCGBattleRequestCardMoveEvent
+{
+    BCCGCardContext@ GetContext();
+    BCCGCardPile GetDestPile();
+    BCCGCardPlacement GetDestPos();
+    bool IsImmediate();
+    void SetImmediate(bool immediate);
+}
+
+//can be casted from Event when BCCG_CHAR_DUNG_COMPONENT_CARD_MOVED occured
+class CardMoveEvent
+{
+    BCCGCardInstance@ GetInstance();
+    BCCGCardPile GetSourcePileId();
+    BCCGCardPile GetTargetPileId();
+}
+
+//can be casted from Event when BCCG_BATTLE_SOMEONE_PLAYED_CARD occured
+class  BCCGBattleSomeonePlayedCardEvent{
+    BCCGCardContext@ GetContext();
+}
+
+////////////////////->CARD_RELATED<-/////////////////////
+
+//used for changing and getting card parameters
+class BCCGCardInstanceParams
+{
+    int GetParam(BCCGCardParam param);
+    void SetParam(BCCGCardParam param, int val);
+}
+
+class BCCGCardInstance
+{
+    BCCGCardInstance@ BCCGCardInstance(string name);
+    void Init(BCCGCardClass@ card, int id, bool hide = false);
+    BCCGCardInstanceParams@ GetParams();
+}
+
+class BCCGCardClass
+{
+    const string& GetName();
+    BCCGCardRarity GetRarity();
+}
+
+class BCCGCardContext
+{
+    BCCGDungeon@ m_pDung;
+    BCCGCardClass@ m_pClass;
+    BCCGCharacterObj@ m_pCharInst;
+    BCCGCardTargetContext m_Targets;
+    BCCGCardInstanceParams@ m_pParams;
+}
+
+////////////////////->OBJECTS<-/////////////////////
+
+class BodMonsterObj {
+    bool IsFrozen();
+    bool IsStunned();
+}
+
+class Object
+{
+    bool opEquals(const BCCGInfluenceInstanceBase&in) const;
+}
+
+class BCCGMultiplayerObj
+{
+    int GetControllerQueueEndTimestamp();
+    bool IsOwnedByLocalPlayer();
+    int GetId();
+}
+
+class BCCGInfluenceInstanceBase : RefObj, Object
+{
+    int GetLinkedCharacterId();
+    void ForceRemove();
+    int GetCounter();
+    void SetCounter(int val);
+    void SendEventToParents(Event@ evt, Class@ cls = null);
+    bool opEquals(const Object&in) const;
+    void TriggerUsedEffect();
+    void TriggerOwnerEffects(BCCGDungeon@ dung);
+}
+
+class BCCGMonsterObj : BCCGMultiplayerObj, BodDungObj
+{
+    void PushController(BCCGMonsterObjController@ ctrl, bool front);
+    string GetFamily();
+    int GetStrength();
+    bool IsDead();
+    bool IsDying();
+    bool IsCurrentIntentAttack();
+    BCCGMonsterActionBase@ GetCurrentIntent();
+    void AddStateController(BCCGMonsterObjController@ controller, BCCGDungeon@ dung);
+}
+
+class BCCGCharacterInstanceBase
+{
+    int GetNewCardId();
+    BCCGCharacterDungeonComponent@ FindDungeonComponent();
+}
+
+class BCCGCharacterObj : BCCGMultiplayerObj, BodDungObj
+{
+    void PushController(BCCGCharacterObjController@ controller);
+    BCCGCharacterInstanceBase@ AccessCharacterInstance();
+}
+
+////////////////////->OTHER<-/////////////////////
+
+class BCCGDungeon
+{
+    bool GetIsServer() const;
+}
+
+class BCCGInfluenceExecuteContext
+{
+    BCCGInfluenceTurn m_Turn;
+    BCCGBattleControllerBase@ m_pController;
+    int m_OwnerId;
+}
+
+class BCCGBattleControllerBase
+{
+    BCCGDungeon@ GetDungeon();
+    BCCGCharacterInstanceBase@ GetLocalCharacter();
+    bool ShouldExecuteServerLogic();
+    int GetRound();
+}
+
+class BCCGIncomingDamage
+{
+    int m_Regular;
+    int m_Piercing;
+    int m_InfluenceRegular;
+    int m_InfluencePiercin;
+}
+
+class string
+{
+    bool empty();
+    bool opEquals(string b);
+}
+
+class array<T>
+{
+    T opIndex(int index);
+
+    insertLast(T);
+    insertAt(int index, T value);
+    removeAt(int index);
+    removeRange(uint start, uint count);
+    length();
+    int find(const T& in);
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+//-------------------------------- ENUMS ---------------------------------------------------------------
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+enum BCCGCardPile
+{
+    Hand,
+    DrawPile,
+    DiscardPile,
+    ExhaustPile,
+    Play,
+    VoidPile
+}
+
+enum BCCGCardRarity
+{
+    Common,
+    Rare,
+    Legendary,
+    Starter,
+    Summoned
+}
+
+enum BCCGCardParam
+{
+	Damage = 0,
+	Block,
+	CardDraw,
+	Cost,
+	MagicNum1,
+	MagicNum2,
+	CachedNum1,
+	CachedNum2,
+	InstanceId,
+	// end of params
+	NUM_CHANNELS
+};
+
+enum BCCGInfluenceTurn
+{
+    BeginRound,
+    EndPlayerRound,
+    EndRound       
+}
+
+enum BCCGPartitionDistance
+{
+    Near,
+    Far,
+    OutGame
+}
+
+enum BCCGSwistLook
+{
+	SWIST_LOOK_WARRIOR = 0,
+	SWIST_LOOK_WARRIOR_MIGHTY,
+	SWIST_LOOK_WARRIOR_DAGGER,
+	SWIST_LOOK_WARRIOR_DAGGER_LEGEND,
+	SWIST_LOOK_WARRIOR_SHADOWSWORD,
+	SWIST_LOOK_MISSILE,
+	SWIST_LOOK_MISSILE_EPIC,
+	SWIST_LOOK_ROGUE_CLAWS,
+	SWIST_LOOK_SHIELD_BASH,
+	SWIST_LOOK_GOLEM,
+	SWIST_LOOK_WARRIOR_MIGHTY_2,
+	SWIST_LOOK_WARRIOR_MIGHTY_3,
+	SWIST_LOOK_CURSE,
+	SWIST_LOOK_RELIC,
+	SWIST_LOOK_SPECIAL,
+	SWIST_LOOK_JI
+};
+
+enum BCCGMonsterMoveStyle
+{
+    Walk,
+    Jump,
+    Teleport
+};
+
+enum ParamCardType
+{
+    Block,
+    HP,
+    MaxHP,
+    Mana,
+    Sterngth,
+    Gemstones
+}
+
+enum BodMonsterTransType
+{
+    TRANS_GENERIC,
+    TRANS_TELEPORT,
+    TRANS_PIMP_RAIN
+}
+
+enum BCCGCardPlacement
+{
+    Bottom,
+    Top, 
+    Random
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+//-------------------------------- GLOBAL METHODS -------------------------------------------------------
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+funcdef void MonsterFunc(BCCGMonsterObj@ mon);
+
+//returns random monster
+BCCGMonsterObj@ GetRandomMonster(BCCGDungeon@ dung);
+
+//returns random int
+int GetRandomInt(int min, int max);
+
+//pushes controller on random monster
+void PushControllerOnRandomMonster(BCCGDungeon@ dung, BCCGMonsterObjController@ ctrl);
+
+//adds new card to chosen card pile
+void AddCardToPile(BCCGCharacterObj@ character, string card_name, BCCGCardPile pile);
+void AddCardToPile(BCCGCharacterObj@ character, BCCGCardInstance@ card, BCCGCardPile pile);
+void AddNewCard(BCCGCharacterDungeonComponent@ char_component, BCCGCardInstance@ card, BCCGCardPile pile);
+void AddNewCard(BCCGCharacterDungeonComponent@ char_component, BCCGCardInstance@ card, BCCGCardPile pile, BCCGCardPlacement dest_pos, Random@ rng);
+
+//returns id from multiplayer object
+int GetId(BCCGMultiplayerObj@ obj);
+
+//checks if card has a defined keyword
+bool CardHasKeyword(BCCGCardClass@ card, string keyword);
+
+//finds card from resources by name
+BCCGCardClass@ FindCard(string name, bool skip_dlc = false);
+
+//finds influence from resources by name
+BCCGInfluenceClass@ FindInfluence(string name);
+
+//pushes influence
+void PushInfluenceByName(BCCGDungeon@ dungeon, string influence_name, BCCGCharacterObj@ character);
+void PushInfluence(BCCGDungeon@ dungeon, BCCGInfluenceInstanceBase@ influence, BCCGCharacterObj@ character);
+
+//returns dungeon object
+BCCGDungeon@ GetDungeon();
+
+//returns smart pointer which should be manually released via Release method
+BCCGInfluenceInstanceBase@ CreateInfluenceInstance(BCCGInfluenceClass@ infClass, int linked_id);
+void Release(RefObj@ obj);
+
+//prints message on console
+void Print(string msg);
+
+//checks if influence has a specified CardHasTag
+bool InfluenceHasTag(BCCGInfluenceInstanceBase@ inf, string tag);
+
+//returns influence if specified owner has an influence with specified tag
+BCCGInfluenceInstanceBase@ FindPushedInfluenceByTag(string tag, int owner_id);
+
+//returns absolute value
+int Abs(int);
+float Abs(float);
+
+//clamps int value
+int Clamp(int val, int min, int max);
+
+//retruns multiplayer object wit specified id
+BCCGMultiplayerObj@ GetObjById(int id);
+
+//checks if specified card has specified tag
+bool CardHasTag(BCCGCardClass@ card, string tag);
+
+//inits character block controller
+void InitCharacterBlockController(BCCGCharacterBlockController@ ctrl, int change, bool with_effect = true);
+
+//used to iterate through every monster and invokes specified method handler for every monster
+void ForEachMonster(MonsterFunc@ func);
+
+//returns distance from object
+BCCGPartitionDistance GetDistance(BodDungObj@ obj);
+
+//returns slice id from object
+int GetSliceId(BodDungObj@ obj);
+
+//inits monster hit controller
+void InitMonsterHitController(BCCGMonsterHitController@ ctrl, int damage, int from_id, BCCGSwistLook swist = BCCGSwistLook::SWIST_LOOK_WARRIOR);
+
+//consverts int to string
+string IntToString(int val);
+
+//checks if character has targeted monster
+bool IsTarget(BCCGCharacterObj@ character, BCCGMonsterObj@ monster);
+
+//writes to int to file
+void WriteInt(File@ file, const int data);
+
+//writes bool to file
+void WriteBool(File@ file, const bool data);
+
+//reads int from file
+int ReadInt(File@ file);
+
+//reads bool from file
+bool ReadBool(File@ file);
+
+//moves monster to specified slice and distance
+void MoveMonster(BCCGDungeon@ dung, BCCGMonsterObj@ monster, int target_slice_id, BCCGPartitionDistance target_distance, BCCGMonsterMoveStyle style, float speed);
+
+//get random slice and distance, slice_id and distance passed by reference
+void GetRandomSector(BCCGDungeon@ dung, BCCGMonsterObj@ monster, int &out slice_id, BCCGPartitionDistance &out distance, bool skip_current_monster_sector = true);
+
+//init BCCGCharacterHitController
+void InitCharacterHitController(BCCGMonsterHitController@ ctrl, int damage, int from_id, BCCGSwistLook swist = BCCGSwistLook::SWIST_LOOK_WARRIOR);
+
+//returns character max mana
+int GetMaxMana(BCCGCharacterDungeonComponent@ char_component, BCCGDungeon@ dung);
+
+//returns character 
+int GetNumCardsToDraw(BCCGCharacterDungeonComponent@ char_component);
+
+//returns character max cards in hand
+int GetMaxCardsInHand(BCCGCharacterInstanceBase@ char);
+
+//returns BCCGCardInstance if specified BCCGCardClass was found in specified BCCGCardPile
+BCCGCardInstance@ FindCardByClass(BCCGCharacterDungeonComponent@ char_component, BCCGCardClass@ card_class, BCCGCardPile pile);
+
+//discards card from character
+void DiscardCard(BCCGCharacterDungeonComponent@ char_component, BCCGCardInstance@ card);
+
+//moves all card from one pile to another
+void MoveAll(BCCGCharacterDungeonComponent@ char_component, BCCGCardPile from, BCCGCardPile to);
+
+//discards current hand of character
+void DiscardHand(BCCGCharacterDungeonComponent@ char_component);
+
+//returns random class
+Random@ GetRandom();
+
+//moves card from one pile to another
+void MoveCard(BCCGCharacterDungeonComponent@ char_component, BCCGCardInstance@ card, BCCGCardPile dest_pile, BCCGCardPlacement dest_pos, Random@ rng);
+
+//shuffles cards from chosen pile
+void ShuffleCards(BCCGCharacterDungeonComponent@ char_component, BCCGCardPile pile, Random@ rng);
+void TriggerInfluenceEffectOnTarget(BCCGInfluenceInstanceBase@ influence, BCCGDungeon@ dung, BCCGMultiplayerObj@ target);
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+//-------------------------------- EVENTS ---------------------------------------------------------------
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//sends when player shows card, it defines that player started targetting
+EventType BCCG_BATTLE_SHOW_CARD;
+
+//sends when player played card
+EventType BCCG_BATTLE_SOMEONE_PLAYED_CARD;
+
+//sends when influence should be removed
+EventType BCCG_INFLUENCE_ABOUT_TO_BE_REMOVED;
+
+//sends when influence push method has been invoked
+EventType BCCG_INFLUENCE_PUSH_EVT;
+
+//sends when controller has ended
+EventType BCCG_DUNGEON_CONTROLLER_ENDED;
+
+//sends when monster has been killed
+EventType BCCG_DUNG_MONSTER_KILLED;
+
+//sends when card has been moved
+EventType BCCG_CHAR_DUNG_COMPONENT_CARD_MOVED;
+
+//sends when character has been killed
+EventType BCCG_DUNG_CHARACTER_KILLED;
+
+//sends when card was added to character
+EventType BCCG_CHAR_DUNG_COMPONENT_CARD_ADDED;
+
+//sends when character params has been changed
+EventType BCCG_CHAR_DUNG_COMPONENT_PARAM_CHANGED;
+
+//sends when card was played
+EventType BCCG_BATTLE_CARD_PLAYED;
+
+//sends when controller has started
+EventType BCCG_DUNGEON_CONTROLLER_STARTED;
+
+//sends when player has hide the card
+EventType BCCG_BATTLE_HIDE_CARD;
+
+//sends when character discarder or shuffled cards
+EventType BCCG_CHAR_DUNG_COMPONENT_DISCARD_SHUFFLED;
+
+//sends when influence instance has been changed
+EventType BCCG_INFLUENCE_INSTANCE_CHANGED;
+
+//sends when influence group has been changed
+EventType BCCG_INFLUENCE_GROUP_CHANGED;
+
+//sends when influence has been used
+EventType BCCG_INFLUENCE_INSTANCE_USED;
+
+//sends when study cost has been changed
+EventType BCCG_STUDY_COST_CHANGED;
+
+//sends when card has been moved
+EventType BCCG_BATTLE_REQUEST_CARD_MOVE;
+
+//sends after card move
+EventType BCCG_PROCESS_CARD_MOVE_REQUESTS_EVT;

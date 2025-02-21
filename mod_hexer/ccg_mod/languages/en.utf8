@@ -1,0 +1,200 @@
+almanac_hexer_cards = "Hexer Cards"
+almanac_starting_hexer = "Starting (Hexer)"
+almanac_hexer_plural = "Hexers"
+
+outfit_hexer_name = "Hexer"
+
+hexer_desc_fluff = "Mutated and trained from childhood to do only one thing: \^00FFFFkill monsters\^^. This fearsome hunter uses his \^00FFFFcombat training\^^, useful \^00FFFFpotions\^^ and a little bit of \^00FFFFmagic\^^ to gain the upper hand against his enemies."
+
+hexer_disp_name = "Hexer"
+hexer_disp_name_cap = "HEXER"
+
+
+poison_influence_desc = "Represents the character's level of toxicity. Each time the counter increases, add to draw pile number of \^d0d0ffToxin\^^ cards equal to the increase. When counter reaches 0 Poison is removed."
+poison_influence_name = "Poison"
+
+car_toxin_hex_title = "Toxin"
+car_toxin_hex_desc  = "On discard, deal \1 damage to player.\n\^debf56Exhaust\^^ on play and on discard."
+
+
+silver_sword_name = "Silver Sword"
+silver_sword_desc = "Your Swords deal +1 damage for every Poison you have."
+
+medallion_name = "Medallion"
+medallion_desc = "At the start of your turn, gain 1 block for every monster in your slice."
+
+weird_horse_name = "Weird Horse"
+weird_horse_desc = "At the start of your turn, move a random monster to a random section, deal random damage to it (between 1 and 10)."
+
+
+car_retributionpotion_hex_desc = "Until next round, every monster that attacks you and deals damage lower or equal to your Poison, will be stunned on your next turn.\nGain \7 Poison."
+car_retributionpotion_hex_title = "Retribution Potion"
+
+car_healpotion_hex_desc = "At the start of your turn, heal HP equal to the current Poison. Lasts for 3 turns.\nGain \7 Poison."
+car_healpotion_hex_title = "Heal Potion"
+
+car_replicationpotion_hex_desc = "Copy the next card you play to your hand with a cost of 0. If you have \6 or more Poison, copy one more.\nGain \7 Poison. \^debf56Exhaust\^^."
+car_replicationpotion_hex_title = "Replication Potion"
+
+car_ragepotion_hex_desc = "Increase damage by Poison. Lasts for 3 turns.\nGain \7 Poison."
+car_ragepotion_hex_title = "Rage Potion"
+
+car_hastepotion_hex_desc = "Gain 1 additional mana for Poison + \8 turns (\5 total).\nGain \7 Poison."
+car_hastepotion_hex_title = "Haste Potion"
+
+car_guardpotion_hex_desc = "At the start of your turn gain block equal to Poison. Lasts for 3 turns.\nGain \7 Poison."
+car_guardpotion_hex_title = "Guard Potion"
+
+car_burn_hex_desc = "Deal 2 + 2 times Poison Damage in small radius.\n(\1 total)\n\^debf56Exhaust\^^."
+car_burn_hex_title = "Burn"
+
+car_forcewave_hex_desc = "Push enemies in medium cone from near to far range. If you have \6 or more Poison, freeze them."
+car_forcewave_hex_title = "Force Wave"
+
+car_scorchingwave_hex_desc = "Deal 2 + Poison damage in short cone.\n(\1 total)\nAdd \^d0d0ffBurn\^^ to hand."
+car_scorchingwave_hex_title = "Scorching Wave"
+
+car_mindshackle_hex_desc = "Choose a monster and deal damage equal to it's strength to a random monster. If you have \8 or more Poison, damage is doubled.\n(\1 total)"
+car_mindshackle_hex_title = "Mind Shackle"
+
+car_hexzone_hex_desc = "At the start of your turn, deal 1 damage to all monsters in near range for 2 + Poison turns.\n(\2 turns total)"
+car_hexzone_hex_title = "Hex Zone"
+
+car_guardiansshield_hex_desc = "After next 1 + Poison monster attacks (\2), heal for absorbed damage."
+car_guardiansshield_hex_title = "Guardians Shield"
+
+
+car_swordthrust_hex_title = "Sword Thrust"
+car_swordthrust_hex_desc = "Deal \1 damage to the first monster in a long narrow cone."
+
+car_quickstab_hex_title = "Quick Stab"
+car_quickstab_hex_desc = "Deal \1 damage.\nIf it kills the monster, return this card to your hand."
+
+car_crowdcontrol_hex_title = "Crowd Control"
+car_crowdcontrol_hex_desc = "Deal \1 damage in a small radius. Multiply this damage by the number of affected monsters but no more than current Poison."
+
+car_pommelstrike_hex_title = "Pommel Strike"
+car_pommelstrike_hex_desc = "Deal \1 damage and \^debf56stun\^^."
+
+car_redirection_hex_title = "Redirection"
+car_redirection_hex_desc = "Deal \1 damage.\nIf the monster's intent is attack, add its strength to damage."
+
+car_armorfracture_hex_title = "Armor Fracture"
+car_armorfracture_hex_desc = "If the monster has \^debf56block\^^, deal unblockable damage equal to its \^debf56block\^^. Otherwise, deal \1 damage."
+
+car_crowdcrusher_hex_title = "Crowd Crusher"
+car_crowdcrusher_hex_desc = "Deal \1 damage in a medium radius. Multiply this damage by the number of affected monsters but no more than current Poison."
+
+car_precisestrike_hex_title = "Precise Strike"
+car_precisestrike_hex_desc = "Deal \1 unblockable damage.\n\^debf56Focus\^^ with x\5 damage. After playing this card reset damage to \6."
+
+car_easypreys_hex_title = "Easy Preys"
+car_easypreys_hex_desc = "Kill \5 non-boss monsters that have the least HP."
+
+car_bladedance_hex_title = "Blade Dance"
+car_bladedance_hex_desc = "Deal each monster in a large radius damage equal to its strength. If the monster's intent is attack, x\5 damage."
+
+
+car_innercontrol_hex_title = "Inner Control"
+car_innercontrol_hex_desc = "Gain \^debf56block\^^ equal to \2 + Poison.\n(\7 total)"
+
+car_beer_hex_title = "Beer"
+car_beer_hex_desc = "Gain \5 Poison"
+
+car_enhancedguardian_hex_title = "Enhanced Guardian"
+car_enhancedguardian_hex_desc = "Give \^debf56block\^^ equal to \2 + Poison to all heroes.\n(\7 total)"
+
+car_poisonedbarrier_hex_title = "Poisoned Barrier"
+car_poisonedbarrier_hex_desc = "Gain \5 Poison.\nGive \^debf56block\^^ equal to \2 + Poison x\6 to all heroes.\n(\7 total)"
+
+car_metabolizetoxin_hex_title = "Metabolize Toxin"
+car_metabolizetoxin_hex_desc = "Get \5 mana.\nIf you have \^d0d0ffToxin\^^ in hand, \^debf56Exhaust\^^ them and get \6 mana for each."
+
+car_freezingsurge_hex_title = "Freezing Surge"
+car_freezingsurge_hex_desc = "\^debf56Freeze\^^ monsters in a long medium cone. If you have \5 or more Poison, \^debf56Freeze\^^ also monsters in near range."
+
+car_iceoverload_hex_title = "Ice Overload"
+car_iceoverload_hex_desc = "\^debf56Freeze\^^ all monsters.\nGain \5 Poison."
+
+car_purifyinghaste_hex_title = "Purifying Haste"
+car_purifyinghaste_hex_desc = "\^debf56Exhaust\^^ all \^d0d0ffToxin\^^ from your deck. All heroes get mana and draw cards equal to 1/\5 of exhausted \^d0d0ffToxin\^^ but no less than \6.\n(\7 total)."
+
+car_cleansingaura_hex_title = "Cleansing Aura"
+car_cleansingaura_hex_desc = "Give \^debf56block\^^ equal to \2x Poison (\7 total) to all heroes. Heal all heroes by 1/\5 Poison (\8 total).\nSet poison to 0"
+
+
+influence_retribution_desc = "Every monster that attacks you and deals damage lower or equal to your Poison, will be stunned on your next turn."
+influence_retribution_name = "Retribution Potion"
+
+influence_heal_desc = "At the start of your turn, heal HP equal to the current Poison."
+influence_heal_name = "Heal Potion"
+
+influence_replication_desc = "When you play a card, it is copied to your hand with a cost of 0."
+influence_replication_name = "Replication Potion"
+
+influence_rage_desc = "Increase damage by the Poison."
+influence_rage_name = "Rage Potion"
+
+influence_haste_desc = "Gain 1 additional mana."
+influence_haste_name = "Haste Potion"
+
+influence_guard_desc = "At the start of your turn, gain block equal to the Poison."
+influence_guard_name = "Guard Potion"
+
+influence_hex_zone_desc = "At the start of your turn, deal 1 damage to all the monsters in near range."
+influence_hex_zone_name = "Hex Zone"
+
+influence_guardians_shield_desc = "After monster attack, heal HP equal to absorbed damage."
+influence_guardians_shield_name = "Guardians Shield"
+
+
+keyword_poison_desc = "Venom flows through character’s veins, with each gulp growing in power. Soon, the character will feel the consequences of consuming it."
+keyword_poison_title = "Poison"
+
+keyword_potion_desc = "A powerful magical concoction that inflicts you with Poison for its entire duration."
+keyword_potion_title = "Potion"
+
+adventure_location_abandonednest_map = "an Abandoned Nest \^ffffffwhere you can get \^cdb991random artifacts\^^, get more \^cdb991mana\^^ or \^cdb991select a card to start future battles with\^^"
+adventure_location_abandonednest = "Abandoned Nest"
+adventure_location_investigate_title = "Investigate"
+adventure_location_investigate_desc = "Get a random artifact of any rarity"
+adventure_location_investigate_alter_desc = "Get a random artifact of any rarity (no artifacts available)"
+adventure_location_prepare_title = "Prepare"
+adventure_location_prepare_desc = "Select a card from your deck. You will start future battles with this card in hand"
+adventure_location_prepare_alter_desc = ""
+adventure_location_brewamanapotion_title = "Brew a mana potion"
+adventure_location_brewamanapotion_desc = "+1 mana points in the next battle"
+adventure_location_brewamanapotion_alter_desc = ""
+
+emo_rainbow_hex_name = "Rainbow"
+
+hex_003 = "Heavens, give me strength! I will not fail you!"
+hex_004 = "I will pour my wrath upon you!"
+hex_009 = "Chaaarge!"
+hex_010 = "LEEEEEEEEEROY JENKINS!"
+hex_014 = "Bring it on!"
+hex_018 = "Hello, darkness, my old friend."
+hex_020 = "Take this!"
+hex_021 = "I prevail!"
+hex_024 = "What kind of unholy creation is this!?"
+hex_025 = "I am the sword that splits darkness."
+hex_026 = "Meet your doom!"
+hex_027 = "Not on my watch!"
+hex_028 = "I like that!"
+hex_029 = "Great!"
+hex_030 = "Nice!"
+hex_031 = "Blessed be the hour!"
+hex_035 = "Phew, you can't imagine how sweaty I am under all these layers of armor."
+hex_036 = "Rest in pieces!"
+hex_037 = "I live for those kinds of fights"
+hex_038 = "This was a formidable foe"
+
+###########################################################################################################
+# MONSTERS
+###########################################################################################################
+
+skeletoncaptain_name = "Skeleton Captain"
+avalanche_name = "avalanche"
+avalanche_desc = "Deals damage to all heroes."
+death_call_name = "Death call" 
+death_call_desc = "On death give +5 strength to monsters in large radius" 

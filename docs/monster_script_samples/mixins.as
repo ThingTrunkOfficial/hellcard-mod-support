@@ -1,0 +1,6 @@
+#include "scripts\mixins\flying.as"
+#include "scripts\mixins\winged.as"
+#include "scripts\mixins\caster.as"
+#include "scripts\mixins\fire.as"
+#include "scripts\mixins\ranged.as"
+#include "scripts\mixins\stationary.as"

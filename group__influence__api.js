@@ -1,0 +1,25 @@
+var group__influence__api =
+[
+    [ "IModifyCostCheckInfluence", "class_i_modify_cost_check_influence.html", null ],
+    [ "ICardDamageModifierInfluence", "class_i_card_damage_modifier_influence.html", null ],
+    [ "IClampFinalCardDamageInfluence", "class_i_clamp_final_card_damage_influence.html", null ],
+    [ "ICardParamValueModifierInfluence", "class_i_card_param_value_modifier_influence.html", null ],
+    [ "IModifyBeginTurnDrawInfluence", "class_i_modify_begin_turn_draw_influence.html", null ],
+    [ "ICantBePlayedInfluence", "class_i_cant_be_played_influence.html", null ],
+    [ "IOnMonsterKilledInfluence", "class_i_on_monster_killed_influence.html", null ],
+    [ "IMultiplayerCardUseInfluence", "class_i_multiplayer_card_use_influence.html", null ],
+    [ "IMonsterDamageModifierInfluence", "class_i_monster_damage_modifier_influence.html", null ],
+    [ "IOnVictoryInfluence", "class_i_on_victory_influence.html", null ],
+    [ "IModifyManaInfluence", "class_i_modify_mana_influence.html", null ],
+    [ "IKeepCardsInHand", "class_i_keep_cards_in_hand.html", null ],
+    [ "IOnDiscardHand", "class_i_on_discard_hand.html", null ],
+    [ "IOnCharacterDamageInfluence", "class_i_on_character_damage_influence.html", null ],
+    [ "IOnCharacterDeathInfluence", "class_i_on_character_death_influence.html", null ],
+    [ "IOnMonsterDamageInfluence", "class_i_on_monster_damage_influence.html", null ],
+    [ "IKeepPlayerBlockInfluence", "class_i_keep_player_block_influence.html", null ],
+    [ "IFilterCardAddInfluence", "class_i_filter_card_add_influence.html", null ],
+    [ "IModifyIncomingDamageInfluence", "class_i_modify_incoming_damage_influence.html", null ],
+    [ "ICardActivable", "class_i_card_activable.html", null ],
+    [ "IModifyHPLossCostInfluence", "class_i_modify_h_p_loss_cost_influence.html", null ],
+    [ "IBlockInfluenceInfluence", "class_i_block_influence_influence.html", null ]
+];

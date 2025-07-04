@@ -92,29 +92,29 @@ The next step is to inspect the properties of the newly imported Hierarchy by se
 
 - Default state - should be set to a pointer to the default state. Check the States chapter for more information. This step should be done later.
 
-- Expected - number of expected directions of imported hierarchy
+- Expected - number of expected directions of imported hierarchy.
 
-- Body heading - current heading of the hierarchy in preview window (can be changed with mouse scroll when editor preview has focus)
+- Body heading - current heading of the hierarchy in preview window (can be changed with mouse scroll when editor preview has focus).
 
-- Part heading - current heading of the selected body part in the Object Tree (a body part in the preview can face a different direction than the rest of the body, for instance, head)
+- Part heading - current heading of the selected body part in the Object Tree (a body part in the preview can face a different direction than the rest of the body, for instance, head).
 
-- Texture - source texture for sprites
+- Texture - source texture for sprites.
 
 - Import Move Params - paste another hierarchy object to import and copy its movement params. Useful when making another hierarchy of a type.
 
-- Import Layer Orders - same as above but for order of bodyparts
+- Import Layer Orders - same as above but for order of bodyparts.
 
 - Keyword for shadow sprites - shadows are a special type of bodyparts (they are faded and scaled when jumping), so they must be identified. Type a shadow bodypart name substring that is unique to shadows.
 
-- Scale Move Multipliers - allows one-click scaling of params in bodyparts
+- Scale Move Multipliers - allows one-click scaling of params in bodyparts.
 
-- Scale Move Amplitudes - allows one-click scaling of params in all bodyparts
+- Scale Move Amplitudes - allows one-click scaling of params in all bodyparts.
 
-- Offset sprites - option to offset sprites by the given offset
+- Offset sprites - option to offset sprites by the given offset.
 
 - Save version - should be incremented every time major changes are done to the production hierarchy. Otherwise, crashes can occur when reading older versions in the release build.
 
-- Size of element slot \[...\] - when editing draw order in direction group this defines size of draggable tile (affects only the editor)
+- Size of element slot \[...\] - when editing draw order in direction group this defines size of draggable tile (affects only the editor).
 
 ## BodyPart properties
 
@@ -124,23 +124,23 @@ It is important to set proper parameters for BodyParts in the Property inspector
 
 - Edited BodyType: this field can take a few preset values. Generally should be set for legs and heads (so they could be affected by custom movers).
 
-- Render layer
+- Render layer.
 
-  - Shadows are rendered first
+  - Shadows are rendered first.
 
-  - Main are rendered second
+  - Main are rendered second.
 
-  - Lights are rendered last and on the light layer casting glows
+  - Lights are rendered last and on the light layer casting glows.
 
 - Move Amplitude - how much will this body part be affected by movers.
 
-- Move Offset - an optional timer offset for sinusoid movement animations
+- Move Offset - an optional timer offset for sinusoid movement animations.
 
-- Move multiplayer - fixed multiplayer applied to movement animations
+- Move multiplayer - fixed multiplayer applied to movement animations.
 
-- Common scale
+- Common scale.
 
-- Color
+- Color.
 
 - WobbleEnabled - if enabled this body part will be affected by wobble animation performed real-time on sprite vertices.
 
@@ -148,7 +148,7 @@ It is important to set proper parameters for BodyParts in the Property inspector
 
 Usually when creating a new character another character can be used as a starting point. For instance when making a new zombie type base zombie could be used as a source of movement params. There is a tool that helps with that and here is how it can be used:
 
-1. Copy source hierarchy to the clipboard by right-clicking and selecting copy to clipboard  
+1. Copy source hierarchy to the clipboard by right-clicking and selecting copy to clipboard.  
 
    ![](./content/hier_hierarchies_11.png)  
 
@@ -156,7 +156,7 @@ Usually when creating a new character another character can be used as a startin
 
    ![](./content/hier_hierarchies_12.png)  
 
-3. Left-click the three-dots menu button on the right of the Import Move Params properties and select "Set from clipboard"  
+3. Left-click the three-dots menu button on the right of the Import Move Params properties and select "Set from clipboard".  
    ![](./content/hier_hierarchies_13.png)  
 
 4. You should see the copy tool. You can drag body parts from src hierarchy onto new body parts from the target hierarchy. You can also use the AUTO option which will try its best to match body parts by names.  
@@ -175,7 +175,7 @@ Sometimes it is required to add a BodyPart by hand.
 
 1. Note down sprite ID on the texture. Keep in mind that HierHierarchy can use only one texture, so all sprites must be on it.
 
-2. Add new BodyPart via context menu  
+2. Add new BodyPart via context menu.  
    ![](./content/hier_hierarchies_15.png)  
    You will note that there are several different BodyPart classes. I will talk about them briefly:
 
@@ -190,23 +190,23 @@ Sometimes it is required to add a BodyPart by hand.
 
 3. Name your new object. I named mine "my_part".
 
-4. Now is the time to add your BodyPart to Directions, which will cause it to actually render. You can do this in two ways. If you know that your new BodyPart will have to be rendered in most of the Directions then right-click it and select the "Add to layers" option and it will do most of the work for you  
+4. Now is the time to add your BodyPart to Directions, which will cause it to actually render. You can do this in two ways. If you know that your new BodyPart will have to be rendered in most of the Directions then right-click it and select the "Add to layers" option and it will do most of the work for you.  
    ![](./content/hier_hierarchies_16.png)  
 
    You will be asked to provide a sprite offset. Give the sprite number here. The editor assumes that sprites are in numerical order and will add provided sprite to the direction 0 and incremented values to the following directions.
 
-5. Note that now new BodyPartSprites are added to your BodyPart and the Directions group is expanded  
+5. Note that now new BodyPartSprites are added to your BodyPart and the Directions group is expanded.  
    ![](./content/hier_hierarchies_17.png)  
    
    Each of your BodyParts has a number in parenthesis. It's their reference count since these objects are now referenced in the Directions.
 
-6. The other way to add BodyPart to Direction is to
+6. The other way to add BodyPart to Direction is to.
 
-   1. create a new BodyPartSprite
+   1. create a new BodyPartSprite.
 
-   2. enter its sprite number in properties
+   2. enter its sprite number in properties.
 
-   3. copy it to the clipboard
+   3. copy it to the clipboard.
 
    4. paste it into the desired direction and select instance (if you do copy it will break the hierarchy!). You will know you did well if the number of references to the right of your BodyPartSprite increments.
 
@@ -231,22 +231,22 @@ If some BodyParts will be turned subjectively to the whole hierarchy direction (
 Most hierarchies need polygons (to be interactable, to render effects etc. automatically).
 To add a polygon to a hierarchy you need to:
 
-1. Right-click on a hierarchy group called Polygon groups, Insert New Object -> HierPolyGroup  
+1. Right-click on a hierarchy group called Polygon groups, Insert New Object -> HierPolyGroup.  
 ![](./content/hier_polygons_1.png)  
-1. Name the group as you like
-1. Right-click the newly created group and click Add polygons. This will automatically create polygons for each direction  
+1. Name the group as you like.
+1. Right-click the newly created group and click Add polygons. This will automatically create polygons for each direction.  
 ![](./content/hier_polygons_2.png)  
 1. Adjust the shape of the polygon, so it quite tightly surrounds the character. This can be done in two ways:
 
-   - Adjust the polygon of the first direction manualy
-      - **Tip**: *ctrl+click on the red lines ads a vertice (green dot)*
-      - **Tip**: *click on a vertice and then Del key to remove it*
-      - **Warning**: *Never do it while the character is zoomed in (Z-key)*  
+   - Adjust the polygon of the first direction manualy.
+      - **Tip**: *ctrl+click on the red lines ads a vertice (green dot)*.
+      - **Tip**: *click on a vertice and then Del key to remove it*.
+      - **Warning**: *Never do it while the character is zoomed in (Z-key)*.  
       ![](./content/particle_effects_in_hier_hierarchies_5.png)   
-      - **Tip**: *You can adjust size of the whole polygon by moving the grey rectangle by its right or bottom edge*
-   - **OR**
-   - Right click on the Polygon group (in the example it will be Staff) and select Auto compute polygons and follow its instructions
-      - **Tip**: *try to reduce number of verticies to minimum*
+      - **Tip**: *You can adjust size of the whole polygon by moving the grey rectangle by its right or bottom edge*.
+   - **OR**.
+   - Right click on the Polygon group (in the example it will be Staff) and select Auto compute polygons and follow its instructions.
+      - **Tip**: *try to reduce number of verticies to minimum*.
 
 1. Hovering and clicking automatically use polygon group named "Bounds".
 1. Effects automatically use polygon group named "Effects".

@@ -6,13 +6,13 @@ Welcome to the [Hellcard](https://store.steampowered.com/app/1201540/HELLCARD/) 
 This repository contains:
 
 - Documentation - set of guides for mod creators describing how to create and modify content for Hellcard.
-- Hexer Mod source - all the content for [Hexer Mod](https://steamcommunity.com/sharedfiles/filedetails/?id=3350421454). We provide it as an example and starting template for an easy start with our modding tools.
+- Hexer Mod source - all the content for the [Hexer Mod](https://steamcommunity.com/sharedfiles/filedetails/?id=3350421454). We provide it as an example and a starting template to be modified and learned from.
 
 
 Documentation
 --------
 
-We've written how-to tutorials for most of the items that you can create or modify in Hellcard. However, it's highly possible that we didn't cover everything. If you are stuck, take a look at the content of the base Game or create an [Issue](https://github.com/ThingTrunkOfficial/hellcard-mod-support/issues).
+We've written how-to tutorials for most of the content you can create or modify in Hellcard. However, it's highly possible that we didn't cover everything. If you are stuck, take a look at the content of the base game or create an [Issue](https://github.com/ThingTrunkOfficial/hellcard-mod-support/issues).
 
 ### Table of Contents
 
@@ -38,17 +38,17 @@ We've written how-to tutorials for most of the items that you can create or modi
 Hexer Mod
 --------
 
-The content of the mod is located in [Mod Hexer](./mod_hexer) directory. 
+The content of the mod is located in the [Mod Hexer](./mod_hexer) directory. 
 
 Hexer Mod contains:
 
-- New Character Class - Hexer
-- Character Look for Hexer
-- 32 new Cards
-- 3 new Artifacts 
-- New Location
-- New Monster
-- New Emoticons
+- New Character Class - Hexer.
+- Character Look for Hexer.
+- 32 new Cards.
+- 3 new Artifacts.
+- New Location.
+- New Monster.
+- New Emoticons.
 
 
 Contributions

@@ -7,6 +7,7 @@ This repository contains:
 
 - Documentation - set of guides for mod creators describing how to create and modify content for Hellcard.
 - Hexer Mod source - all the content for the [Hexer Mod](https://steamcommunity.com/sharedfiles/filedetails/?id=3350421454). We provide it as an example and a starting template to be modified and learned from.
+- Editor executable - check [Getting started](./docs/GettingStarted.md) section for instructions on how to launch the Editor.
 
 
 Documentation

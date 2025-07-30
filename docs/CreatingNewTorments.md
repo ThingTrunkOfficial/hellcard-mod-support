@@ -30,7 +30,7 @@ You can read more about why you need this directories in [Getting started](./Get
 
 - Sprite ID - ID of your sprite on texture.
 - Texture override - texture relative path.
-- UTF Prefix - name which defines a name and a decription for an torment. In your utf files, use *[utf_prefix]_name* for torment name and *[utf_prefix]_desc* for torment description.
+- UTF Prefix - name which defines a name and a decription for an torment. In your utf files, use *[utf_prefix]_name* for torment name and *[utf_prefix]_desc* for torment description. Read more about language files [here](./Languages.md).
 - Torment points - add torment points and torment level.
 - Is unlocked first - should torment be first priority when drawing.
 - Can be chosen by companion - defines if torment can be chosen by companion character.

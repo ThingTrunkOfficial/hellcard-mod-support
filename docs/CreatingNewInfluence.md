@@ -35,7 +35,7 @@ You can read more about why you need this directories in [Getting started](./Get
 
 - Sprite ID - ID of your sprite on texture.
 - Texture Override - texture relative path.
-- UTF Prefix - name which defines a name and a decription for an influence. In your utf files use *[utf_prefix]_name* for influence name on card and *[utf_prefix]_desc* for description on card.
+- UTF Prefix - name which defines a name and a decription for an influence. In your utf files use *[utf_prefix]_name* for influence name on card and *[utf_prefix]_desc* for description on card. Read more about language files [here](./Languages.md).
 - Tags - can be used to determine additional behaviours.
 - Default Counter - counter which influence will have when it shows in play.
 - Class Name - defines main behaviour of influence.

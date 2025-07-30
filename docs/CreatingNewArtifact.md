@@ -52,7 +52,7 @@ You can read more about why you need these directories in [Getting started](./Ge
 
 ## Adding descriptions
 
-Create or modify file *en.utf8* (and any translation file you want) in ***languages*** directory.
+Create or modify file *en.utf8* (and any translation file you want) in ***languages*** directory. Read more about language files [here](./Languages.md).
 
 Set these string values:
 

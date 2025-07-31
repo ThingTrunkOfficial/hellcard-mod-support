@@ -65,6 +65,7 @@ All available languages:
 - Polish: *pl.utf8*
 - Russian: *ru.utf8*
 - Spanish: *es.utf8*
+- Ukrainian: *uk.utf8*
 
 You can use any of this files to provide translation to any language but it will be displayed in language selection window as one of languages above. There is also a possibility that the game font will not work with some specific symbols from languages that are not on the list.
 

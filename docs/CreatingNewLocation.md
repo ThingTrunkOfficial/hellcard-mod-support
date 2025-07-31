@@ -54,6 +54,8 @@ To make a description for your newly created actions use this scheme in your utf
 - ***adventure_location_[Utf id]_desc = "DESCRIPTION"***.
 - ***adventure_location_[Utf id]_alter_desc = "ALTERNATE DESCRIPTION"***.
 
+Read more about language files [here](./Languages.md).
+
 ## Action types
 - PatchUpWounds - Heal 20%.
 - Stash - Remove 1 out of 3 randomly selected cards from your deck.

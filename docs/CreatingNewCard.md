@@ -284,7 +284,7 @@ Remember to save changes by right clicking on ***Mod*** and selecting *Save All*
 
 ## Adding descriptions
 
-Create or modify file *en.utf8* (and any translation file you want) in ***languages*** directory.
+Create or modify file *en.utf8* (and any translation file you want) in ***languages*** directory. Read more about language files [here](./Languages.md).
 
 ### Adding card descriptions
 

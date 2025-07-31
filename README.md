@@ -34,6 +34,8 @@ We've written how-to tutorials for most of the content you can create or modify 
 - [Creating a Monster](./docs/CreatingNewMonster.md)
 - [Creating a Location](./docs/CreatingNewLocation.md)
 - [Adding sounds](./docs/AddingSounds.md)
+- [Working with Languages](./docs/Languages.md)
+- [FAQ](./docs/FAQ.md)
 
 
 Hexer Mod

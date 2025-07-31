@@ -121,7 +121,7 @@ Additionally, like in other descriptions, you can change text color using this s
         - *Class* - any action of the same type will be considered as "the same".
         - *Exact* - only exactly the same action object will be taken into consideration by the repeat control.
         - *Prefix* - actions with the same *utf prefix* will be considered "the same'.
-    - *Utf prefix override* - prefix to find action name and description in utf file.  
+    - *Utf prefix override* - prefix to find action name and description in utf file. Read more about language files [here](./Languages.md).    
 
         Example:
         ```

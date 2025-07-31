@@ -8,9 +8,7 @@
 
 ## Getting access to the Editor
 
-To get access to the Editor, you have to own [Hellcard](https://store.steampowered.com/app/1201540/HELLCARD/) on Steam. Download the contents of the [editor](/editor/) folder and copy them into your game installation directory. Once copied, you can launch the Editor just like any other executable file. The overview of the Editor can be found in [Basic Modding Tools features](./BasicModdingToolsFeatures.md) documentation.
-
-The Editor will be available [here](https://store.steampowered.com/app/3039290) as a free DLC shortly. This will add the second executable to the application on Steam along with a launch option.
+To get access to the Editor you have to own [Hellcard](https://store.steampowered.com/app/1201540/HELLCARD/) on Steam. The Editor is available [here](https://store.steampowered.com/app/3039290) as a free DLC which adds the second executable to the application on Steam along with launch option. The overview of the Editor can be found in [Basic Modding Tools features](./BasicModdingToolsFeatures.md) documentation.
 
 ## Creating a mod
 

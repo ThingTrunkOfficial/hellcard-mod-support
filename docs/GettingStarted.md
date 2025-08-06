@@ -52,7 +52,7 @@ More info: <https://partner.steamgames.com/doc/features/workshop/implementation>
 
 1. Download the [SteamCMD app](https://developer.valvesoftware.com/wiki/SteamCMD). Its a zip file.
 2. Place it in a new and empty folder. Unpack the .zip file and execute the .exe file to install steamcmd.
-3. Before working with it you have to create a settings file called `workshop-item.vdf`. You can download it from this [github repository](https://github.com/ThingTrunkOfficial/hellcard-mod-support/tree/main/mod_hexer) or copy it from here:
+3. Before working with it you have to create a settings file called `workshop-item.vdf`. You can get it from [this repository](../mod_hexer/workshop-item.vdf) or copy it from here:
 
 ``` vdf
 "workshopitem"

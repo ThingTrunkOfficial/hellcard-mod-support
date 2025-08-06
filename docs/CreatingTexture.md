@@ -115,7 +115,7 @@ You can display help menu in the Texture Manager by pressing F1. It will show yo
 | Ctrl+S                            | Save results                                                                        |
 
 ## Hierarchy-tip
-When creating **resulting texture** for [Hierarchies](./docs/CreatingNewHierarchy.md), it is very useful to auto-crop all the sprites while preserving their hotspot. You can do it after adding all the **source asset** (Add multiple) by Right clicking the editor in the Object Tree and selecting Autocrop all. 
+When creating **resulting texture** for [Hierarchies](./CreatingNewHierarchy.md), it is very useful to auto-crop all the sprites while preserving their hotspot. You can do it after adding all the **source asset** (Add multiple) by Right clicking the editor in the Object Tree and selecting Autocrop all. 
 
 ## Save
 

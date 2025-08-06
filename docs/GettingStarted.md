@@ -2,9 +2,11 @@
 
 # Getting started
 
-- [Getting access to the Editor](#getting-access-to-the-editor)
-- [Creating a mod](#creating-a-mod)
-- [Publishing a mod](#publishing-a-mod)
+- [Getting started](#getting-started)
+  - [Getting access to the Editor](#getting-access-to-the-editor)
+  - [Creating a mod](#creating-a-mod)
+  - [Publishing a mod or Uploading it for the first time](#publishing-a-mod-or-uploading-it-for-the-first-time)
+  - [Updating a mod](#updating-a-mod)
 
 ## Getting access to the Editor
 
@@ -43,21 +45,78 @@ To get access to the Editor you have to own [Hellcard](https://store.steampowere
 1. Dependencies (textures, sounds, etc.) are store in a subdirectory named after the mod's identifier (obtained after first upload).
 1. Language files are stored in a subdirectory named languages. Every translation file is named \<lang abbr\>.utf8 (e.g. en.utf8, de.utf8).
 
-
-## Publishing a mod
+## Publishing a mod or Uploading it for the first time
 
 This is a suggested way.  
 More info: <https://partner.steamgames.com/doc/features/workshop/implementation>
 
-1. Download steamcmd app (<https://developer.valvesoftware.com/wiki/SteamCMD>).
-1. Register a mod.
-    - Edit upload-mod.bat script and workshop-item.vdf to contain correct paths and run the script.
-    - If upload was successful, the item config file (workshop-item.vdf) will be updated with filled publishedfileid. You will use this id to update the mod. Also you should use it as a name of a subdirectory containing dependencies (textures, sounds, particle effects) used by resources being part of the mod. It is necessary to avoid overriding dependencies added by other mods.
-1. Prepare a mod and copy its content to the *ccg_mod* directory (or change the path in your workshop-item.vdf to point whatever directory you're using).
-1. Run the script again to update the mod content.
-1. Go to your newly created workshop item's website to edit its properties and access rights.
-1. Remember to remove ccg_mod/ from the game directory before using published version of the mod.
+1. Download the [SteamCMD app](https://developer.valvesoftware.com/wiki/SteamCMD). Its a zip file.
+2. Place it in a new and empty folder. Unpack the .zip file and execute the .exe file to install steamcmd.
+3. Before working with it you have to create a settings file called `workshop-item.vdf`. You can download it from this [github repository](https://github.com/ThingTrunkOfficial/hellcard-mod-support/tree/main/mod_hexer) or copy it from here:
 
+``` vdf
+"workshopitem"
+{
+    "appid"              "1201540"
+    "publishedfileid"    ""
+    "contentfolder"      "C:\Users\YourName\Desktop\ccg_mod"
+    "previewfile"        "C:\Users\YourName\Desktop\Hexer.jpg"
+    "visibility"         "1"
+    "title"              "Hexer mods"
+    "description"        "New cool Hexer Mod yeah"
+    "changenote"         "added new card"
+}
+```
+- `appid`: Hellcard game ID - its 1201540, leave it as is
+- `publishedfileid`: Your mod ID - leave it empty on the first upload, it will be placed automatically if your mod is successfully published
+- `contentfolder`: Absolute path to your ccg_mod folder - can be anywhere you want, try not to use spaces in folder names, **everything in that folder will be uploaded** and can be seen by anyone who downloads the mod
+- `previewfile`: Absolute path to an image that will become your preview image in the mod browser - can be changed later
+- `visibility`: 0 = public, 1 = private, 2 = friends only - can be changed later
+- `title`: Your mod title - can be changed later, will replace the existing title 
+- `description`: Your mod description - can be changed later, will replace the existing description 
+- `changenote`: Changelog
 
+4. Now you can start **steamcmd.exe** again. You should be able to type in commands. 
+    1. First, log in to your Steam account:
+        ```
+        login <username> <password>
+        ```
+        Follow the instructions. You may need to enter a steam guard code. If the login was successful, continue.
+    2. Now you have to upload the mod using your `workshop-item.vdf` file:
+        ```
+        workshop_build_item <file_path>
+        ```
+        **file_path** should be absolute and something like this: `C:\mod_hexer\workshop-item.vdf`
+    1. If it's not working, you've probably misspelled something.
+    2. If everything is correct SteamCMD should tell you. Your workshop item should be created. Check your Steam Workshop if its there. Now you can start writing a description, making the mod public, etc.
+    3. Remember to remove or rename the `ccg_mod/` folder from the game directory before using the published version of your mod.
 
+## Updating a mod
 
+1. To update the mod you have to repeat these steps. A new `workshop-item.vdf` file should have been created in your `ccg_mod` folder. It should have your `publishedfileid` added.
+     - If you update the mod with the `workshop-item.vdf` file, the title and description will be replaced by those in the file. 
+     - So make sure to remove these parameters from your file:
+    ``` vdf
+    "workshopitem"
+    {
+        "appid"              "1201540"
+        "publishedfileid"    "0123456789"
+        "contentfolder"      "C:\Users\YourName\Desktop\ccg_mod"
+        "changenote"         "added new feature"
+    }
+    ```
+2. If you don't want to upload everything manually, you can create a .bat file to automate these steps.
+    ``` bat
+    @echo off
+
+    set steamcmd="C:\steamcmd\steamcmd.exe"
+    set workshop_item_conf="C:\mod_hexer\workshop-item.vdf"
+
+    set /p "login=Login Name: "
+
+    %steamcmd% +login "%login%" +workshop_build_item %workshop_item_conf% +quit
+    ```
+   - replace `C:\steamcmd\steamcmd.exe` with the path to your `steamcmd.exe`
+   - replace `C:\mod_hexer\workshop-item.vdf` with the path to your `workshop-item.vdf`
+   - It only works if you have already identified your PC with your Steam Guard code.
+   - Make sure to update `changenote` in your `workshop-item.vdf` to display what has changed.

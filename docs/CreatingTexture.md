@@ -2,12 +2,13 @@
 
 # Textures
 
-- [Opening Texture Manager](#opening-texture-manager)
-- [Creating a new Texture](#creating-a-new-texture)
-- [Hotspot](#hotspot)
-- [Hierarchy tip](#hierarchy-tip)
-- [Help](#help)
-- [Save](#save)
+- [Textures](#textures)
+  - [Opening Texture Manager](#opening-texture-manager)
+  - [Creating a new Texture](#creating-a-new-texture)
+  - [Hotspot](#hotspot)
+  - [Help](#help)
+  - [Hierarchy-tip](#hierarchy-tip)
+  - [Save](#save)
 
 ## Opening Texture Manager
 
@@ -23,27 +24,34 @@ You can use them to load textures currently not loaded or create a new one.
 
 ## Creating a new Texture
 
-Click Create New. The editor will prompt you to select a subdirectory for the new texture and a name. PNG is preferred but jpg is also possible.  
+Click `Create New`. The editor will prompt you to select a subdirectory for the new texture and a name. PNG is preferred but JPG is also possible. 
+- Make sure you have selected the `ccg_mod\texture` folder and name the texture something that does not yet exist.
 
 ![](./content/texture_manager_3.png)  
 
-New Sprite Editor object should now be added to the root object of the object tree. This is the sprite editor. It can be used to manage source assets, sizes of sprites and build an atlas out of all sprites. 
+`DevAssetSpriteEdit` object should now be added to the root object of the object tree. This is the sprite editor. It can be used to manage source assets, sizes of sprites and build an atlas out of all sprites. 
 
-The preview area is divided into two parts with a vertical line. On the left you can work on current source asset and on the right you can see the resulting texture. Now, however, both are blank. Let's add a source asset so we could see something. 
+The preview area is divided into two parts by a vertical line. On the left, you can work on current the **source asset**, and on the right you can see the **resulting texture**.<br>
+Currently, however, both are blank. Let's add a source asset to see something. 
 
-Right click the editor in the Object Tree and select "Add Multiple":  
+Right click the editor in the Object Tree and select "Add multiple":  
 
 ![](./content/texture_manager_4.png)  
 
-This will open a dialog where you will be able to select one or more source assets to be loaded and added to the editor. I have added a texture with Book of Demons logo on transparent background. Now I can select this source asset in the object tree and see this:  
+This will open a dialog box where you can select one or more **source assets** to load and add to the editor. These will be assets that you created yourself for card images, character icons and so on.<br>
+I have added one **source asset** with the Book of Demons logo on a transparent background, aswell as a red dot. I can select this source asset in the object tree and see the following:  
 
 ![](./content/texture_manager_5.png)  
 
-It's obvious, that the final texture will be too small for any of the logos, but we will try creating a sprite with the red dot. By default, there is always one sprite on every new source asset and it encompasses whole asset.  
+It's obvious, that the **resulting texture** will be too small for any of the logos, but we will try creating a texture with the red dot.\
+By default, there should always be one sprite on every new **source asset**. If you want to have a **source asset** with more than one sprite, like I did here, you have to encompass the desired sprite with the yellow box.
 
 ![](./content/texture_manager_6.png)  
 
-Let's reuse it. You can either select it in the object tree and modify its properties by hand to move it so it encompassed the red dot or select it on the preview (clicking on the sprite area will toggle between all sprites that area belongs to) and resizing it with arrow keys while holding ctrl (moves upper left corner) or alt (bottom right subjectively to upper left). 
+You can either select your **source asset** in the object tree and manually modify its properties to encompass the red dot, or select it in the preview.<br> 
+Clicking on the sprite area will toggle between all sprites to which the area belongs. You can also resize the sprite with the **Arrow Keys** 
+- while holding CTRL to move the upper-left corner,
+- ALT to move the bottom-right corner subjectively to the upper left. 
 
 You can also place the mouse cursor over the sprite and press A. This will try to automatically snap the currently selected sprite around the shape. 
 
@@ -55,86 +63,59 @@ Now it's time to try and fit that new sprite on the final texture. Press B to st
 
 ![](./content/texture_manager_8.png)  
 
-Great success! If we tried to add one of the big ones though (by hovering the cursor over it and pressing P, which adds a new sprite and tries to snap it over the selected shape) and building the texture with B, we would get an error stating that 
+Great success! If we tried to add one of the big ones though (by hovering the cursor over it and pressing P, which adds a new sprite and tries to snap it over the selected shape) and building the **resulting texture** with B, we would get an error stating that 
 
 > 17:57:04.4     - W. 1 Sprites did not fit on texture 
 
-You can enlarge the final texture by changing parameters of the SpriteEditor object  
+You can enlarge the **resulting texture** by changing parameters of the SpriteEditor object.
 
 ![](./content/texture_manager_9.png)  
 
 Just make sure you stick to the power of two - older video cards like these sizes for memory optimization reasons. 
 
 ## Hotspot
-You can move the hotspot of the sprite by holding H key and using arrow keys or pressing the RMB. Hotspot is an equivalent of a pivot in a 3d object. It determines the location where the sprite is rendered and serves as a center of rotation and scale.
+You can move the hotspot of the **source asset** by holding H key and using arrow keys or pressing the RMB. Hotspot is an equivalent of a pivot in a 3d object. It determines the location where the sprite is rendered and serves as a center of rotation and scale.
 
 ## Help
-You can display help menu in the Texture Manager by pressing F1. I will show you the following shortcuts:
+You can display help menu in the Texture Manager by pressing F1. It will show you the following shortcuts:
 
-CTRL + Arrows - moves sprite around
+| Shortcut     | Effect       |
+| ------------ | ------------ |
+| CTRL + Arrows                     | Moves sprite around                                                                 |
+| X [mod]                           | Preserve absolute hot-spot                                                          |
+| S + LMB                           | Position asset separator (can also drag)                                            |
+| X + LMB or RMB (with H held down) | Moves sprite corners while preserving absolute hot-spot position                    |
+| B                                 | Build texture                                                                       |
+| F                                 | Reset workspace offsets, texture scale and separator position to defaults           |
+| G                                 | Toggle sample visible                                                               |
+| O                                 | When pressed sprites in result tex will show extra pixel sides with blue lines      |
+| H                                 | When held down enables hot-spot operations                                          |
+| R - click                         | Place hot-spot                                                                      |
+| Cursor arrows                     | Move spr hot-spot                                                                   |
+| Ctrl [mod]                        | Move whole sprite with hot-spot                                                     |
+| Alt [mod]                         | Change sprite width and height                                                      |
+| Shift [mod]                       | Translate by 10 instead of one                                                      |
+| Z [mod]                           | Any operation on hot-spot is propagated to assets in sequence (anim00012.png, etc.) |
+| K [mod]                           | Any operation on hot-spot is propagated to all assets                               |
+| C                                 | Center hot-spot                                                                     |
+| A                                 | Auto-crop sprite from mouse position using alpha                                    |
+| Ctrl [mod]                        | Preserve absolute hot-spot pos                                                      |
+| Q                                 | Auto-crop sprite from mouse position using color                                    |
+| Ctrl [mod]                        | Preserve absolute hot-spot pos                                                      |
+| M                                 | Auto-crop sprite from texture sides                                                 |
+| P                                 | Create new sprite auto-cropped over mouse pos                                       |
+| +/-                               | Move to next / prev sprite                                                          |
+| Ctrl + M                          | Convert to multi sprite                                                             |
+| E                                 | Expand sprite by 1 px                                                               |
+| Ctrl [Mod]                        | Shrink sprite by 1px                                                                |
+| Ctrl+T                            | If no texture is loaded switches to texture manager                                 |
+| Ctrl+N                            | If no texture is loaded creates new texture                                         |
+| Ctrl+Z                            | Undo last action                                                                    |
+| Ctrl+Y                            | Redo last action                                                                    |
+| Ctrl+S                            | Save results                                                                        |
 
-X [mod] - preserve absolute hot-spot
-
-S + LMB - position asset separator (can also drag)
-
-X + LMB or RMB (with H held down) moves sprite corners while preserving abs. hot-spot position
-
-B - build texture
-
-F - reset workspace offsets, texture scale and separator position to defaults
-
-G - toggle sample visible
-
-O - when pressed sprites in result tex will show extra pixel sides with blue lines
-
-H - when held down enables hot-spot operations
-
-r - click - place hot-spot
-
-cursor arrows - move spr hot-spot
-
-ctrl [mod] - move whole sprite with hot-spot
-
-alt [mod] - change sprite width and height
-
-shift [mod] - translate by 10 instead of one
-
-Z [mod] - any operation on hot-spot is propagated to assets in sequence (anim00012.png, etc.)
-
-K [mod] - any operation on hot-spot is propagated to all assets 
-
-C - center hot-spot
-
-A - auto-crop sprite from mouse position using alpha
-
- ctrl [mod] - preserve absolute hot-spot pos
-
-Q - auto-crop sprite from mouse position using color
-
- ctrl [mod] - preserve absolute hot-spot pos
-
-M - auto-crop sprite from texture sides
-
-P - create new sprite auto-cropped over mouse pos
-
-+/- - move to next / prev sprite
-
-ctrl + M - convert to multi sprite
-
-E - expand sprite by 1 px
-
- ctrl [Mod] - shrink sprite by 1px
-
-Ctrl+T - if no texture is loaded switches to texture manager
-
-Ctrl+N - if no texture is loaded creates new texture
-
-Ctrl+Z - undo last action
-
-Ctrl+Y - redo last action
-
-## hierarchy-tip
-When creating textures for [Hierarchies](./docs/CreatingNewHierarchy.md), it is very useful to auto-crop all the sprites while preserving their hotspot. You can do it after adding all the files (Add multiple) by Right clicking the editor in the Object Tree and selecting Autocrop all. 
+## Hierarchy-tip
+When creating **resulting texture** for [Hierarchies](./docs/CreatingNewHierarchy.md), it is very useful to auto-crop all the sprites while preserving their hotspot. You can do it after adding all the **source asset** (Add multiple) by Right clicking the editor in the Object Tree and selecting Autocrop all. 
 
 ## Save
 

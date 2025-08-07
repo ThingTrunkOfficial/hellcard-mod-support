@@ -54,8 +54,8 @@ All available languages:
 
 - Brazilian Portuguese: *pt-br.utf8*
 - Bulgarian: *bg.utf8*
-- Chinese Simplified: *cn.utf8*
-- Chinese Traditional: *zh.utf8*
+- Chinese Simplified: *zh.utf8*
+- Chinese Traditional: *cn.utf8*
 - English: *en.utf8*
 - French: *fr.utf8*
 - German: *de.utf8*

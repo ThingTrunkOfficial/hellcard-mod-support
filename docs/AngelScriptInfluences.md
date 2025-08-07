@@ -11,6 +11,7 @@
 - [Examples](#examples)
 
 ## How to start scripting
+
 Create an influence of type *BCCGAngelscriptInfluence*.
 If you don't know how to do it, go to: [Creating influences](./CreatingNewInfluence.md).
 Now, create an .as file somewhere in the mod content directory.
@@ -21,10 +22,18 @@ In your newly created influence, in parameters, specify path to *.as* file and s
 Now, you're ready to start scripting.
 
 ## Tools
+
 To make development of *AngelScript* influences a little bit easier, we've prepared a file with all the exposed properties [Predefined](../mod_hexer/ccg_mod/3350421454/scripts/as.predefined). 
-We also highly encourage to install [AngelScript Language Server](https://marketplace.visualstudio.com/items?itemName=sashi0034.angel-lsp) vs code extension, which offers syntax highlighting, autocompletion and many more.
+We also highly encourage to install [AngelScript Language Server](https://marketplace.visualstudio.com/items?itemName=sashi0034.angel-lsp) vs code extension, which offers syntax highlighting, autocompletion and many more.  
+
+You can also view some global AngelScript functions and types by left-clicking on *ScriptManager* under ***Root->Resource Managers->ScriptManager***.  
+
+![Registered scripts](./content/registered_scripts.png)  
+
+If you want to use some of the registered objects and you see similarly named versions like: *BodMonsterObj* and *BCCGMonsterObj*, always choose the ***BCCG*** version.
 
 ## Method override
+
 By implementing specified methods in *Influence* class, you will override influence original behaviour. Just copy these signatures if you want to use them and add body of each method to start using it. If you want to leave the default beahaviour, just don't implement method.
 List of all influence methods:
 - ```void Init(BCCGInfluenceInstanceBase@ influenceBase)```
@@ -102,11 +111,13 @@ List of all intreface methods:
     - allows to block specific influences from being pushed to the character.
 
 ## Memory management
+
 Memory management is quite straight forward.
 The only function you should worry about is ```BCCGInfluenceInstanceBase@ CreateInfluenceInstance(BCCGInfluenceClass@ infClass, int linked_id)```which returns a smart pointer.
 Returned result from that function should be released via ```void Release(RefObj@ obj)```
 
 ## Ownership
+
 Ownership is very important matter when it comes to multiplayer games. If you want to change any object in the game, push controller to do it. ***The only player who can push controllers to objects is their owner.*** 
 
 Methods and functions invoked on server or client:
@@ -152,8 +163,10 @@ The owner of specified object can be checked by:
 3. For server: ```BCCGBattleControllerBase.ShouldExecuteServerLogic()```.
 
 ## Event management
+
 Via ```int ProcessEvent(Event@ evt, BCCGInfluenceInstanceBase@ influence)```implemented method you will be able to receive events from other objects in the game. Be aware that some events need to be casted to more precise type if you want to make more complicated behaviours. To see all available events go to the end of [Predefined](../mod_hexer/ccg_mod/3350421454/scripts/as.predefined) file.
 
 ## Examples
+
 For more examples how influences can be made go to [Scripts directory](../mod_hexer/ccg_mod/3350421454/scripts/).
 Where you can find multiple scripts used in hexer mod.

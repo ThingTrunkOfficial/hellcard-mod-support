@@ -9,13 +9,11 @@ class BCCGCardTargetContext{}
 class RefObj{}
 class BCCGInfluenceClass{}
 class Class{}
-class OptionalBCCGCardContext{}
 class File{}
 class BodDungObj{}
 class BCCGMonsterActionBase{}
 class BCCGMonsterAttackAction{}
 class BCCGVisualMonsterObj{}
-class DmgDesc{}
 class BCCGCharacterDungeonComponent{}
 class Random{}
 
@@ -180,12 +178,14 @@ class BCCGCardInstance
     BCCGCardInstance@ BCCGCardInstance(string name);
     void Init(BCCGCardClass@ card, int id, bool hide = false);
     BCCGCardInstanceParams@ GetParams();
+    BCCGCardClass@ GetCardClass();
 }
 
 class BCCGCardClass
 {
     const string& GetName();
     BCCGCardRarity GetRarity();
+    BCCGCardType GetType();
 }
 
 class BCCGCardContext
@@ -232,7 +232,10 @@ class BCCGMonsterObj : BCCGMultiplayerObj, BodDungObj
 {
     void PushController(BCCGMonsterObjController@ ctrl, bool front);
     string GetFamily();
-    int GetStrength();
+    int GetStrength() const;
+    int GetHP() const;
+    int GetMaxHP() const;
+    int GetBlock() const;
     bool IsDead();
     bool IsDying();
     bool IsCurrentIntentAttack();
@@ -250,6 +253,13 @@ class BCCGCharacterObj : BCCGMultiplayerObj, BodDungObj
 {
     void PushController(BCCGCharacterObjController@ controller);
     BCCGCharacterInstanceBase@ AccessCharacterInstance();
+    BCCGIncomingDamage@ GetDetailedIncomingDamage();
+    int GetIncomingDamage() const;
+    int GetBlock() const;
+    int GetHP() const;
+    int GetMaxHP() const;
+    int GetMana() const;
+    int GetGemstones() const;
 }
 
 ////////////////////->OTHER<-/////////////////////
@@ -279,7 +289,7 @@ class BCCGIncomingDamage
     int m_Regular;
     int m_Piercing;
     int m_InfluenceRegular;
-    int m_InfluencePiercin;
+    int m_InfluencePiercing;
 }
 
 class string
@@ -311,8 +321,8 @@ enum BCCGCardPile
     DrawPile,
     DiscardPile,
     ExhaustPile,
-    Play,
-    VoidPile
+    Play, //used to store card being played
+    VoidPile //used to store deleted instances
 }
 
 enum BCCGCardRarity
@@ -322,6 +332,14 @@ enum BCCGCardRarity
     Legendary,
     Starter,
     Summoned
+}
+
+enum BCCGCardType
+{
+    Attack,
+    Skill,
+    Influence,
+    Status
 }
 
 enum BCCGCardParam
@@ -410,6 +428,9 @@ enum BCCGCardPlacement
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 funcdef void MonsterFunc(BCCGMonsterObj@ mon);
+funcdef void CharacterFunc(BCCGCharacterObj@ character);
+funcdef void TargetFunc(BCCGMultiplayerObj@ obj);
+funcdef void CardFunc(BCCGCardInstance@ obj);
 
 //returns random monster
 BCCGMonsterObj@ GetRandomMonster(BCCGDungeon@ dung);
@@ -474,8 +495,17 @@ bool CardHasTag(BCCGCardClass@ card, string tag);
 //inits character block controller
 void InitCharacterBlockController(BCCGCharacterBlockController@ ctrl, int change, bool with_effect = true);
 
-//used to iterate through every monster and invokes specified method handler for every monster
+//used to iterate through every monster and invoke the specified method handler for each one
 void ForEachMonster(MonsterFunc@ func);
+
+//used to iterate through every character and invoke the specified method handler for each one
+void ForEachCharacter(CharacterFunc@ func);
+
+//used to iterate through every target in the targets and invoke the specified method handler for each one
+void ForEachTarget(const BCCGCardTargetContext& targets, TargetFunc@ func);
+
+//used to iterate through every card in the card pile and invoke the specified method handler for each one
+void ForEachCardInPile(BCCGCharacterDungeonComponent@ component, BCCGCardPile pile, CardFunc@ func);
 
 //returns distance from object
 BCCGPartitionDistance GetDistance(BodDungObj@ obj);
@@ -492,7 +522,7 @@ string IntToString(int val);
 //checks if character has targeted monster
 bool IsTarget(BCCGCharacterObj@ character, BCCGMonsterObj@ monster);
 
-//writes to int to file
+//writes int to file
 void WriteInt(File@ file, const int data);
 
 //writes bool to file
@@ -511,7 +541,7 @@ void MoveMonster(BCCGDungeon@ dung, BCCGMonsterObj@ monster, int target_slice_id
 void GetRandomSector(BCCGDungeon@ dung, BCCGMonsterObj@ monster, int &out slice_id, BCCGPartitionDistance &out distance, bool skip_current_monster_sector = true);
 
 //init BCCGCharacterHitController
-void InitCharacterHitController(BCCGMonsterHitController@ ctrl, int damage, int from_id, BCCGSwistLook swist = BCCGSwistLook::SWIST_LOOK_WARRIOR);
+void InitCharacterHitController(BCCGCharacterHitController@ ctrl, int damage, int from_id, BCCGSwistLook swist = BCCGSwistLook::SWIST_LOOK_WARRIOR);
 
 //returns character max mana
 int GetMaxMana(BCCGCharacterDungeonComponent@ char_component, BCCGDungeon@ dung);
@@ -539,6 +569,9 @@ Random@ GetRandom();
 
 //moves card from one pile to another
 void MoveCard(BCCGCharacterDungeonComponent@ char_component, BCCGCardInstance@ card, BCCGCardPile dest_pile, BCCGCardPlacement dest_pos, Random@ rng);
+
+//transfers up to 'max_card_count' from draw pile to the player's hand
+void DrawCards(BCCGCharacterDungeonComponent@ char_component, int max_card_count);
 
 //shuffles cards from chosen pile
 void ShuffleCards(BCCGCharacterDungeonComponent@ char_component, BCCGCardPile pile, Random@ rng);
